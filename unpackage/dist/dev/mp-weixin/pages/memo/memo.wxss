@@ -1,5 +1,12 @@
 
-.top.data-v-c0e26b37 {
-		display: flex;
-		justify-content: center;
+.container.data-v-c0e26b37 {
+	padding: 40rpx;
+}
+.btn.data-v-c0e26b37 {
+	margin-bottom: 20rpx;
+}
+.empty.data-v-c0e26b37 {
+	text-align: center;
+	padding: 100rpx 0;
+	color: #999;
 }

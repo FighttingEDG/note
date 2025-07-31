@@ -1,19 +1,32 @@
 <template>
 	<view class="container">
-		<uni-list>
-			<uni-list-item title="个人信息" note="查看和编辑个人信息" />
-			<uni-list-item title="设置" note="应用设置" />
-			<uni-list-item title="关于" note="关于应用" />
-		</uni-list>
+		<!-- 展示配置信息 -->
+		<view class="config-info">
+			<text>当前应用: {{ appSettings.name }}</text>
+			<text>版本: {{ appSettings.version }}</text>
+			<text>分类数量: {{ memoConfig.categories.length }}</text>
+		</view>
 	</view>
 </template>
 
 <script setup>
-// 这里可以引入后续逻辑
+import { appSettings, memoConfig } from '@/config/index.js'
 </script>
 
 <style scoped>
 .container {
 	padding: 40rpx;
+}
+.config-info {
+	margin-top: 40rpx;
+	padding: 20rpx;
+	background: #f5f5f5;
+	border-radius: 10rpx;
+}
+.config-info text {
+	display: block;
+	margin-bottom: 10rpx;
+	font-size: 24rpx;
+	color: #666;
 }
 </style> 

@@ -2,3 +2,15 @@
 .container.data-v-0f7520f0 {
 	padding: 40rpx;
 }
+.config-info.data-v-0f7520f0 {
+	margin-top: 40rpx;
+	padding: 20rpx;
+	background: #f5f5f5;
+	border-radius: 10rpx;
+}
+.config-info text.data-v-0f7520f0 {
+	display: block;
+	margin-bottom: 10rpx;
+	font-size: 24rpx;
+	color: #666;
+}
