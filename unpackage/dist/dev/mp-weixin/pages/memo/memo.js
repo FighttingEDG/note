@@ -1,7 +1,6 @@
 "use strict";
 const common_vendor = require("../../common/vendor.js");
 const api_memo = require("../../api/memo.js");
-require("../../config/app_config.js");
 if (!Array) {
   const _easycom_uni_tag2 = common_vendor.resolveComponent("uni-tag");
   const _easycom_uni_list_item2 = common_vendor.resolveComponent("uni-list-item");

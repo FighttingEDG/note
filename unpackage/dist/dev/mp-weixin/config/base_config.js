@@ -19,7 +19,9 @@ const baseConfig = {
   },
   // 存储配置
   storage: {
+    // 用户token
     tokenKey: "token",
+    // 用户信息
     userInfoKey: "userInfo",
     settingsKey: "settings"
   },
