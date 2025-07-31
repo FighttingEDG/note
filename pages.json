@@ -1,0 +1,73 @@
+{
+	"pages": [
+		{
+			"path": "pages/memo/memo",
+			"style": {
+				"navigationBarTitleText": "备忘录"
+			}
+		},
+		{
+			"path": "pages/todo/todo",
+			"style": {
+				"navigationBarTitleText": "代办"
+			}
+		},
+		{
+			"path": "pages/category/category",
+			"style": {
+				"navigationBarTitleText": "分类"
+			}
+		},
+		{
+			"path": "pages/user/user",
+			"style": {
+				"navigationBarTitleText": "我的"
+			}
+		}
+	],
+	"tabBar": {
+		"color": "#666666",
+		"selectedColor": "#007aff",
+		"backgroundColor": "#ffffff",
+		"borderStyle": "black",
+		"h5": {
+			"titleNView": false,
+			"router": {
+				"mode": "hash"
+			}
+		},
+		"list": [
+			{
+				"pagePath": "pages/memo/memo",
+				"text": "备忘录"
+			},
+			{
+				"pagePath": "pages/todo/todo",
+				"text": "代办"
+			},
+			{
+				"pagePath": "pages/category/category",
+				"text": "分类"
+			},
+			{
+				"pagePath": "pages/user/user",
+				"text": "我的"
+			}
+		]
+	},
+	"easycom": {
+		"autoscan": true,
+		"custom": {
+			"^uni-(.*)": "@/uni_modules/uni-$1/components/uni-$1/uni-$1.vue"
+		}
+	},
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "备忘录",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8",
+		"app-plus": {
+			"background": "#efeff4"
+		}
+	}
+}

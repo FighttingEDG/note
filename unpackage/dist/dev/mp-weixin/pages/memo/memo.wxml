@@ -1,0 +1,1 @@
+<view class="top data-v-c0e26b37"> 占位 </view><uni-card wx:if="{{a}}" class="data-v-c0e26b37" u-s="{{['d']}}" u-i="c0e26b37-0" bind:__l="__l" u-p="{{a}}"><text class="uni-body data-v-c0e26b37">这是一个通栏卡片 ，通栏没有外边距，左右会贴合父元素。</text></uni-card>

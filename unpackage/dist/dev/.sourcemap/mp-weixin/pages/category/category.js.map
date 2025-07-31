@@ -1,0 +1,1 @@
+{"version":3,"file":"category.js","sources":["pages/category/category.vue?type=page"],"sourcesContent":["import MiniProgramPage from '/Users/jevonsmac/Desktop/project/front/note/pages/category/category.vue'\nwx.createPage(MiniProgramPage)"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;AACA,GAAG,WAAW,eAAe;"}

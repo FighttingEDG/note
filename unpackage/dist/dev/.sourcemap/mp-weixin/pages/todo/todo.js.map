@@ -1,0 +1,1 @@
+{"version":3,"file":"todo.js","sources":["pages/todo/todo.vue?type=page"],"sourcesContent":["import MiniProgramPage from '/Users/jevonsmac/Desktop/project/front/note/pages/todo/todo.vue'\nwx.createPage(MiniProgramPage)"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;AACA,GAAG,WAAW,eAAe;"}

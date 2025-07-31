@@ -1,0 +1,1 @@
+{"version":3,"file":"memo.js","sources":["pages/memo/memo.vue?type=page"],"sourcesContent":["import MiniProgramPage from '/Users/jevonsmac/Desktop/project/front/note/pages/memo/memo.vue'\nwx.createPage(MiniProgramPage)"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;;;;;;;AACA,GAAG,WAAW,eAAe;"}
