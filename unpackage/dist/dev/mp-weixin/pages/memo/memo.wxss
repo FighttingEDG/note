@@ -1,12 +1,7 @@
 
-.container.data-v-c0e26b37 {
-	padding: 40rpx;
-}
-.btn.data-v-c0e26b37 {
-	margin-bottom: 20rpx;
-}
+.container.data-v-c0e26b37 {}
 .empty.data-v-c0e26b37 {
-	text-align: center;
-	padding: 100rpx 0;
-	color: #999;
+		text-align: center;
+		padding: 100rpx 0;
+		color: #999;
 }

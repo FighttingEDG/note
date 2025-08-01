@@ -1,6 +1,9 @@
 "use strict";
 const common_vendor = require("../common/vendor.js");
 const config_index = require("../config/index.js");
+function serializeParams(params = {}) {
+  return Object.keys(params).map((key) => `${encodeURIComponent(key)}=${encodeURIComponent(params[key])}`).join("&");
+}
 const requestInterceptor = (options) => {
   const token = common_vendor.index.getStorageSync("token");
   if (token) {
@@ -12,7 +15,10 @@ const requestInterceptor = (options) => {
   return options;
 };
 const responseInterceptor = (response) => {
-  const { statusCode, data } = response;
+  const {
+    statusCode,
+    data
+  } = response;
   if (statusCode === 200) {
     if (data.code === 200 || data.code === 0) {
       return data.data || data;
@@ -32,7 +38,7 @@ const responseInterceptor = (response) => {
   }
 };
 const errorHandler = (error) => {
-  common_vendor.index.__f__("error", "at utils/request.js:53", "请求错误:", error);
+  common_vendor.index.__f__("error", "at utils/request.js:63", "请求错误:", error);
   if (error.errMsg && error.errMsg.includes("timeout")) {
     common_vendor.index.showToast({
       title: "请求超时",
@@ -77,10 +83,13 @@ const request = (options) => {
 const http = {
   // GET 请求
   get(url, params = {}, options = {}) {
+    const query = serializeParams(params);
+    if (query) {
+      url += (url.includes("?") ? "&" : "?") + query;
+    }
     return request({
       url,
       method: "GET",
-      data: params,
       ...options
     });
   },
