@@ -3,7 +3,8 @@
     "pages/memo/memo",
     "pages/todo/todo",
     "pages/category/category",
-    "pages/user/user"
+    "pages/user/user",
+    "pages/memo/memoDetail"
   ],
   "window": {
     "navigationBarTextStyle": "black",

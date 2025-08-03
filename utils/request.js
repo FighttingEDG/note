@@ -1,6 +1,7 @@
 /**
  * 网络请求封装
  * 基于 uni.request 实现跨平台请求
+ * 增加全局错误处理，避免每个请求都写try-catch
  */
 
 import {
@@ -41,20 +42,18 @@ const responseInterceptor = (response) => {
 		if (data.code === 200 || data.code === 0) {
 			return data.data || data
 		} else {
-			// 业务错误
-			uni.showToast({
-				title: data.message || '请求失败',
-				icon: 'none'
-			})
-			return Promise.reject(data)
+			// 业务错误 - 不在这里显示错误提示，而是传递给errorHandler.js处理
+			// 创建一个包含message的错误对象
+			const error = new Error(data.message || '请求失败');
+			error.data = data; // 保存原始数据，以便错误处理函数可以访问
+			return Promise.reject(error);
 		}
 	} else {
-		// HTTP 错误
-		uni.showToast({
-			title: `网络错误: ${statusCode}`,
-			icon: 'none'
-		})
-		return Promise.reject(response)
+		// HTTP 错误 - 不在这里显示错误提示，而是传递给errorHandler.js处理
+		const error = new Error(`网络错误: ${statusCode}`);
+		error.statusCode = statusCode;
+		error.response = response;
+		return Promise.reject(error);
 	}
 }
 
@@ -62,20 +61,23 @@ const responseInterceptor = (response) => {
 const errorHandler = (error) => {
 	console.error('请求错误:', error)
 
-	// 网络错误
-	if (error.errMsg && error.errMsg.includes('timeout')) {
-		uni.showToast({
-			title: '请求超时',
-			icon: 'none'
-		})
-	} else if (error.errMsg && error.errMsg.includes('fail')) {
-		uni.showToast({
-			title: '网络连接失败',
-			icon: 'none'
-		})
+	// 处理网络错误
+	if (error.errMsg) {
+		if (error.errMsg.includes('timeout')) {
+			// 创建一个包含message的错误对象
+			const timeoutError = new Error('请求超时');
+			timeoutError.originalError = error;
+			return Promise.reject(timeoutError);
+		} else if (error.errMsg.includes('fail')) {
+			// 创建一个包含message的错误对象
+			const networkError = new Error('网络连接失败');
+			networkError.originalError = error;
+			return Promise.reject(networkError);
+		}
 	}
 
-	return Promise.reject(error)
+	// 如果已经是Error对象（来自responseInterceptor），直接返回
+	return Promise.reject(error);
 }
 
 // 核心请求方法
@@ -113,6 +115,15 @@ const request = (options) => {
 	})
 }
 
+// 全局错误处理包装函数
+const withErrorHandler = (requestPromise) => {
+	return requestPromise.catch(error => {
+		// 错误已经在 errorHandler 和 responseInterceptor 中处理过
+		// 这里只需要返回一个被拒绝的 Promise，让调用链继续
+		return Promise.reject(error);
+	});
+};
+
 // 便捷方法
 export const http = {
 	// GET 请求
@@ -121,41 +132,41 @@ export const http = {
 		if (query) {
 			url += (url.includes('?') ? '&' : '?') + query
 		}
-		return request({
+		return withErrorHandler(request({
 			url,
 			method: 'GET',
 			...options
-		})
+		}));
 	},
 
 	// POST 请求
 	post(url, data = {}, options = {}) {
-		return request({
+		return withErrorHandler(request({
 			url,
 			method: 'POST',
 			data,
 			...options
-		})
+		}));
 	},
 
 	// PUT 请求
 	put(url, data = {}, options = {}) {
-		return request({
+		return withErrorHandler(request({
 			url,
 			method: 'PUT',
 			data,
 			...options
-		})
+		}));
 	},
 
 	// DELETE 请求
 	delete(url, params = {}, options = {}) {
-		return request({
+		return withErrorHandler(request({
 			url,
 			method: 'DELETE',
 			data: params,
 			...options
-		})
+		}));
 	}
 }
 

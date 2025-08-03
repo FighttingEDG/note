@@ -23,32 +23,29 @@ const responseInterceptor = (response) => {
     if (data.code === 200 || data.code === 0) {
       return data.data || data;
     } else {
-      common_vendor.index.showToast({
-        title: data.message || "请求失败",
-        icon: "none"
-      });
-      return Promise.reject(data);
+      const error = new Error(data.message || "请求失败");
+      error.data = data;
+      return Promise.reject(error);
     }
   } else {
-    common_vendor.index.showToast({
-      title: `网络错误: ${statusCode}`,
-      icon: "none"
-    });
-    return Promise.reject(response);
+    const error = new Error(`网络错误: ${statusCode}`);
+    error.statusCode = statusCode;
+    error.response = response;
+    return Promise.reject(error);
   }
 };
 const errorHandler = (error) => {
-  common_vendor.index.__f__("error", "at utils/request.js:63", "请求错误:", error);
-  if (error.errMsg && error.errMsg.includes("timeout")) {
-    common_vendor.index.showToast({
-      title: "请求超时",
-      icon: "none"
-    });
-  } else if (error.errMsg && error.errMsg.includes("fail")) {
-    common_vendor.index.showToast({
-      title: "网络连接失败",
-      icon: "none"
-    });
+  common_vendor.index.__f__("error", "at utils/request.js:62", "请求错误:", error);
+  if (error.errMsg) {
+    if (error.errMsg.includes("timeout")) {
+      const timeoutError = new Error("请求超时");
+      timeoutError.originalError = error;
+      return Promise.reject(timeoutError);
+    } else if (error.errMsg.includes("fail")) {
+      const networkError = new Error("网络连接失败");
+      networkError.originalError = error;
+      return Promise.reject(networkError);
+    }
   }
   return Promise.reject(error);
 };
@@ -80,6 +77,11 @@ const request = (options) => {
     common_vendor.index.request(finalOptions);
   });
 };
+const withErrorHandler = (requestPromise) => {
+  return requestPromise.catch((error) => {
+    return Promise.reject(error);
+  });
+};
 const http = {
   // GET 请求
   get(url, params = {}, options = {}) {
@@ -87,38 +89,38 @@ const http = {
     if (query) {
       url += (url.includes("?") ? "&" : "?") + query;
     }
-    return request({
+    return withErrorHandler(request({
       url,
       method: "GET",
       ...options
-    });
+    }));
   },
   // POST 请求
   post(url, data = {}, options = {}) {
-    return request({
+    return withErrorHandler(request({
       url,
       method: "POST",
       data,
       ...options
-    });
+    }));
   },
   // PUT 请求
   put(url, data = {}, options = {}) {
-    return request({
+    return withErrorHandler(request({
       url,
       method: "PUT",
       data,
       ...options
-    });
+    }));
   },
   // DELETE 请求
   delete(url, params = {}, options = {}) {
-    return request({
+    return withErrorHandler(request({
       url,
       method: "DELETE",
       data: params,
       ...options
-    });
+    }));
   }
 };
 exports.http = http;

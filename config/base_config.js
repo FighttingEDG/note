@@ -6,7 +6,7 @@
 const baseConfig = {
 	// 网络请求配置
 	request: {
-		baseURL: 'http://localhost:8011/api', // 后端接口基础地址
+		baseURL: 'http://192.168.31.171:8011/api', // 后端接口基础地址
 		timeout: 10000, // 超时时间（毫秒）
 		header: {
 			'Content-Type': 'application/json'

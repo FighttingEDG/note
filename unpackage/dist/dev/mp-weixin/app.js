@@ -6,6 +6,7 @@ if (!Math) {
   "./pages/todo/todo.js";
   "./pages/category/category.js";
   "./pages/user/user.js";
+  "./pages/memo/memoDetail.js";
 }
 const _sfc_main = {
   onLaunch: function() {

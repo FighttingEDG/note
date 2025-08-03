@@ -10,7 +10,7 @@ export const memoApi = {
   },
   
   // 搜索备忘录
-  searchMemo(keyword) {
-    return http.get('/memo/search', { keyword })
+  searchMemo(params = {}) {
+    return http.get('/memo/search', params)
   }
-} 
+}

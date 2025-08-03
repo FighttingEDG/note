@@ -6,8 +6,8 @@ const memoApi = {
     return utils_request.http.get("/memo/list", params);
   },
   // 搜索备忘录
-  searchMemo(keyword) {
-    return utils_request.http.get("/memo/search", { keyword });
+  searchMemo(params = {}) {
+    return utils_request.http.get("/memo/search", params);
   }
 };
 exports.memoApi = memoApi;
