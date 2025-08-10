@@ -6,11 +6,11 @@ import { http } from '@/utils/request.js'
 export const memoApi = {
   // 获取备忘录列表
   getMemoList(params = {}) {
-    return http.get('/memo/list', params)
+    return http.post('/memo/list', params)
   },
   
   // 搜索备忘录
   searchMemo(params = {}) {
-    return http.get('/memo/search', params)
+    return http.post('/memo/search', params)
   }
 }

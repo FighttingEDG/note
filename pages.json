@@ -1,6 +1,15 @@
 {
 	"pages": [
 		{
+			"path": "pages/login/login",
+			"style": {
+				"navigationBarTitleText": "登录",
+				"navigationBarBackgroundColor": "#667eea",
+				"navigationBarTextStyle": "white",
+				"backgroundColor": "#667eea"
+			}
+		},
+		{
 			"path": "pages/memo/memo",
 			"style": {
 				"navigationBarTitleText": "备忘录"
@@ -25,13 +34,18 @@
 			}
 		},
 		{
-			"path" : "pages/memo/memoDetail",
-			"style" : 
-			{
-				"navigationBarTitleText" : "详情"
+			"path": "pages/memo/memoDetail",
+			"style": {
+				"navigationBarTitleText": "详情"
 			}
 		}
 	],
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "备忘录",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8"
+	  },
 	"tabBar": {
 		"color": "#666666",
 		"selectedColor": "#007aff",
@@ -67,14 +81,6 @@
 		"custom": {
 			"^uni-(.*)": "@/uni_modules/uni-$1/components/uni-$1/uni-$1.vue"
 		}
-	},
-	"globalStyle": {
-		"navigationBarTextStyle": "black",
-		"navigationBarTitleText": "备忘录",
-		"navigationBarBackgroundColor": "#F8F8F8",
-		"backgroundColor": "#F8F8F8",
-		"app-plus": {
-			"background": "#efeff4"
-		}
 	}
+
 }

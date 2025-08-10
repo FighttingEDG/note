@@ -29,7 +29,7 @@ const _sfc_main = {
       const params = {
         pageNum: pageNum.value,
         pageSize: pageSize.value,
-        uid: 1,
+        // 后端从jwt获取用户ID，不再传uid
         categoryIds: "1,2",
         keyword: ""
         // 可以留空或填关键词

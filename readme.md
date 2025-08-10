@@ -55,3 +55,6 @@ if (data) {
 2. 安装依赖: `npm install`
 3. 开发运行: `npm run dev:h5` 或其他平台
 4. 构建: `npm run build`
+
+
+### 需要用户操作的接口需要传bearer token

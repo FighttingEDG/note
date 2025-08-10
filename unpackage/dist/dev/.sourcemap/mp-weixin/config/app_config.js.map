@@ -1,1 +1,1 @@
-{"version":3,"file":"app_config.js","sources":["config/app_config.js"],"sourcesContent":["/**\r\n * 应用配置文件\r\n * 包含业务相关的配置\r\n */\r\n\r\nconst appConfig = {\r\n \r\n}\r\n\r\nexport default appConfig "],"names":[],"mappings":";AAKK,MAAC,YAAY,CAElB;;"}
+{"version":3,"file":"app_config.js","sources":["config/app_config.js"],"sourcesContent":["/**\n * 应用配置文件\n * 包含业务相关的配置\n */\n\nconst appConfig = {\n \n}\n\nexport default appConfig "],"names":[],"mappings":";AAKK,MAAC,YAAY,CAElB;;"}

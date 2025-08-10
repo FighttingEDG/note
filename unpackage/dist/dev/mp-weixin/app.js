@@ -2,6 +2,7 @@
 Object.defineProperty(exports, Symbol.toStringTag, { value: "Module" });
 const common_vendor = require("./common/vendor.js");
 if (!Math) {
+  "./pages/login/login.js";
   "./pages/memo/memo.js";
   "./pages/todo/todo.js";
   "./pages/category/category.js";
@@ -9,15 +10,43 @@ if (!Math) {
   "./pages/memo/memoDetail.js";
 }
 const _sfc_main = {
-  onLaunch: function() {
-    common_vendor.index.__f__("warn", "at App.vue:4", "当前组件仅支持 uni_modules 目录结构 ，请升级 HBuilderX 到 3.1.0 版本以上！");
-    common_vendor.index.__f__("log", "at App.vue:5", "App Launch");
-  },
-  onShow: function() {
-    common_vendor.index.__f__("log", "at App.vue:8", "App Show");
-  },
-  onHide: function() {
-    common_vendor.index.__f__("log", "at App.vue:11", "App Hide");
+  __name: "App",
+  setup(__props) {
+    const checkLogin = () => {
+      const token = common_vendor.index.getStorageSync("token");
+      if (!token) {
+        const pages = getCurrentPages();
+        const currentPage = pages[pages.length - 1];
+        const currentPath = currentPage ? currentPage.route : "";
+        if (currentPath !== "pages/login/login") {
+          common_vendor.index.reLaunch({
+            url: "/pages/login/login",
+            success: () => {
+              common_vendor.index.__f__("log", "at App.vue:19", "跳转到登录页成功");
+            },
+            fail: (err) => {
+              common_vendor.index.__f__("error", "at App.vue:22", "跳转失败:", err);
+            }
+          });
+          return false;
+        }
+      }
+      return true;
+    };
+    common_vendor.onLaunch(() => {
+      common_vendor.index.__f__("log", "at App.vue:33", "App Launch");
+      setTimeout(() => {
+        checkLogin();
+      }, 500);
+    });
+    common_vendor.onShow(() => {
+      common_vendor.index.__f__("log", "at App.vue:42", "App Show");
+      setTimeout(() => {
+        checkLogin();
+      }, 500);
+    });
+    return () => {
+    };
   }
 };
 function createApp() {

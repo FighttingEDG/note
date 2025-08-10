@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/login/login",
     "pages/memo/memo",
     "pages/todo/todo",
     "pages/category/category",

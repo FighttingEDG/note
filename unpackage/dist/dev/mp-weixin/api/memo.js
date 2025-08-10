@@ -3,11 +3,11 @@ const utils_request = require("../utils/request.js");
 const memoApi = {
   // 获取备忘录列表
   getMemoList(params = {}) {
-    return utils_request.http.get("/memo/list", params);
+    return utils_request.http.post("/memo/list", params);
   },
   // 搜索备忘录
   searchMemo(params = {}) {
-    return utils_request.http.get("/memo/search", params);
+    return utils_request.http.post("/memo/search", params);
   }
 };
 exports.memoApi = memoApi;
