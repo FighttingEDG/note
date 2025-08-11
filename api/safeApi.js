@@ -4,7 +4,7 @@
  */
 
 import { createSafeApi } from '@/utils/errorHandler.js';
-import { memoApi } from './memo.js';
+import { memoApi } from './memoApi.js';
 import { userApi } from './userApi.js';
 
 // 创建安全的用户API

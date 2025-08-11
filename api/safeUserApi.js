@@ -6,7 +6,7 @@
 import { createSafeApi } from '@/utils/errorHandler.js';
 import { userApi } from './userApi.js';
 
-// 创建安全的用户API
+// 安全的用户API
 export const safeUserApi = createSafeApi(userApi, {
     // 默认配置
     showError: true,

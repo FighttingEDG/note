@@ -189,7 +189,7 @@ onError: (error) => {
 ### 方法1：使用handleAsync的onError回调
 
 ```javascript
-import { memoApi } from '@/api/memo.js'
+import { memoApi } from '@/api/memoApi.js'
 import { handleAsync } from '@/utils/errorHandler.js'
 
 // 使用onError回调处理特定错误

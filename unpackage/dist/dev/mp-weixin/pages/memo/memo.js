@@ -37,7 +37,7 @@ const _sfc_main = {
       const data = await api_safeApi.safeMemoApi.getMemoList(params);
       if (data) {
         total.value = data.total;
-        common_vendor.index.__f__("log", "at pages/memo/memo.vue:61", data);
+        common_vendor.index.__f__("log", "at pages/memo/memo.vue:57", data);
         memoList.value = (data == null ? void 0 : data.records) || [];
       }
       loading.value = false;

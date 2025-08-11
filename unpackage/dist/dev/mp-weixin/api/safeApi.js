@@ -1,7 +1,7 @@
 "use strict";
 const common_vendor = require("../common/vendor.js");
 const utils_errorHandler = require("../utils/errorHandler.js");
-const api_memo = require("./memo.js");
+const api_memoApi = require("./memoApi.js");
 const api_userApi = require("./userApi.js");
 utils_errorHandler.createSafeApi(api_userApi.userApi, {
   // 默认配置
@@ -13,7 +13,7 @@ utils_errorHandler.createSafeApi(api_userApi.userApi, {
     common_vendor.index.__f__("error", "at api/safeApi.js:17", "用户API错误:", error);
   }
 });
-const safeMemoApi = utils_errorHandler.createSafeApi(api_memo.memoApi, {
+const safeMemoApi = utils_errorHandler.createSafeApi(api_memoApi.memoApi, {
   // 默认配置
   showError: true,
   errorMsg: "获取备忘录失败",

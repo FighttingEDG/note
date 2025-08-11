@@ -29,10 +29,6 @@
 		safeMemoApi
 	} from '@/api/safeApi.js'
 	import {
-		appSettings,
-		memoConfig
-	} from '@/config/index.js'
-	import {
 		handleAsync
 	} from '@/utils/errorHandler.js'
 
