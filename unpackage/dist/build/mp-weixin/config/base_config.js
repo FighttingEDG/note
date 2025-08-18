@@ -1,1 +1,0 @@
-"use strict";exports.baseConfig={request:{baseURL:"http://120.55.112.67:8001/api",timeout:1e4,header:{"Content-Type":"application/json"}},app:{name:"备忘录",version:"1.0.0",debug:!0},storage:{tokenKey:"token",userInfoKey:"userInfo",settingsKey:"settings"},page:{pageSize:20,defaultCategory:"默认分类"}};

@@ -1,1 +1,0 @@
-<view class="container data-v-fab48934"><uni-list class="data-v-fab48934" u-s="{{['d']}}" u-i="fab48934-0" bind:__l="__l"><uni-list-item wx:if="{{a}}" class="data-v-fab48934" u-i="fab48934-1,fab48934-0" bind:__l="__l" u-p="{{a}}"/><uni-list-item wx:if="{{b}}" class="data-v-fab48934" u-i="fab48934-2,fab48934-0" bind:__l="__l" u-p="{{b}}"/></uni-list></view>

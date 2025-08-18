@@ -1,1 +1,0 @@
-{"version":3,"file":"memoDetail.js","sources":["D:/HBuilderX/plugins/uniapp-cli-vite/uniPage:/cGFnZXMvdmlldy9tZW1vRGV0YWlsL21lbW9EZXRhaWwudnVl"],"sourcesContent":["import MiniProgramPage from 'E:/PrivateProject/front/note/pages/view/memoDetail/memoDetail.vue'\nwx.createPage(MiniProgramPage)"],"names":[],"mappings":";;;;;;;AACA,GAAG,WAAW,eAAe;"}
