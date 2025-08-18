@@ -34,7 +34,7 @@
 			}
 		},
 		{
-			"path": "pages/memo/memoDetail",
+			"path": "pages/view/memoDetail/memoDetail",
 			"style": {
 				"navigationBarTitleText": "详情"
 			}

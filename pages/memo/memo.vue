@@ -2,7 +2,7 @@
 	<view class="container">
 		<uni-row class="content-row" margin="0px" v-for="memo in memoList" :key="memo.id">
 			<uni-col :span="24">
-				<uni-card :title="memo.title" :extra="memo.updatedAt">
+				<uni-card :title="memo.title" :extra="memo.updatedAt" @click="handleMemoClick(memo)">
 					<text class="uni-body">{{memo.content}}</text>
 				</uni-card>
 			</uni-col>
@@ -31,7 +31,24 @@
 	import {
 		handleAsync
 	} from '@/utils/errorHandler.js'
+	// 平台检查
+	const isH5 = process.env.VUE_APP_PLATFORM === 'h5'
+	const isMpWeixin = process.env.VUE_APP_PLATFORM === 'mp-weixin'
 
+	// 安全的 DOM 操作函数
+	const safeQuerySelector = (selector) => {
+		if (isH5 && typeof document !== 'undefined') {
+			return document.querySelector(selector)
+		}
+		return null
+	}
+
+	const safeGetElementById = (id) => {
+		if (isH5 && typeof document !== 'undefined') {
+			return document.getElementById(id)
+		}
+		return null
+	}
 	// 响应式数据
 	const memoList = ref([]) // memo列表
 	const loading = ref(false) // 加载状态
@@ -62,27 +79,10 @@
 	
 	// 点击备忘录
 	const handleMemoClick = (memo) => {
-		// 使用handleAsync包装异步操作
-		handleAsync(
-			async () => {
-				console.log('点击了备忘录:', memo.title)
-				// 这里可以是任何异步操作，比如获取详情、更新状态等
-				// 模拟异步操作
-				await new Promise(resolve => setTimeout(resolve, 100))
-				return memo
-			}, {
-				showError: true,
-				errorMsg: '操作失败',
-				loading: false,
-				onSuccess: (result) => {
-					// 成功回调
-					uni.showToast({
-						title: `点击了: ${result.title}`,
-						icon: 'none'
-					})
-				}
-			}
-		)
+		// 跳转到详情页
+		uni.navigateTo({
+			url: `/pages/view/memoDetail/memoDetail?id=${memo.id}&title=${memo.title}`
+		})
 	}
 
 	// 处理分页变化

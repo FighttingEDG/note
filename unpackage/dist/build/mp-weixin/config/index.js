@@ -1,0 +1,1 @@
+"use strict";const e=require("./base_config.js"),s=require("./app_config.js"),o={...e.baseConfig,...s.appConfig},p=o.request,i=o.app,r=o.memo;exports.appSettings=i,exports.memoConfig=r,exports.requestConfig=p;

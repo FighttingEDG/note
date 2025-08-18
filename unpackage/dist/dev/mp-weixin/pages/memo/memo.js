@@ -37,10 +37,15 @@ const _sfc_main = {
       const data = await api_safeApi.safeMemoApi.getMemoList(params);
       if (data) {
         total.value = data.total;
-        common_vendor.index.__f__("log", "at pages/memo/memo.vue:57", data);
+        common_vendor.index.__f__("log", "at pages/memo/memo.vue:74", data);
         memoList.value = (data == null ? void 0 : data.records) || [];
       }
       loading.value = false;
+    };
+    const handleMemoClick = (memo) => {
+      common_vendor.index.navigateTo({
+        url: `/pages/view/memoDetail/memoDetail?id=${memo.id}&title=${memo.title}`
+      });
     };
     const handlePageChange = (e) => {
       pageNum.value = e.current;
@@ -66,14 +71,15 @@ const _sfc_main = {
         a: common_vendor.f(memoList.value, (memo, k0, i0) => {
           return {
             a: common_vendor.t(memo.content),
-            b: "c0e26b37-2-" + i0 + "," + ("c0e26b37-1-" + i0),
-            c: common_vendor.p({
+            b: common_vendor.o(($event) => handleMemoClick(memo), memo.id),
+            c: "c0e26b37-2-" + i0 + "," + ("c0e26b37-1-" + i0),
+            d: common_vendor.p({
               title: memo.title,
               extra: memo.updatedAt
             }),
-            d: "c0e26b37-1-" + i0 + "," + ("c0e26b37-0-" + i0),
-            e: memo.id,
-            f: "c0e26b37-0-" + i0
+            e: "c0e26b37-1-" + i0 + "," + ("c0e26b37-0-" + i0),
+            f: memo.id,
+            g: "c0e26b37-0-" + i0
           };
         }),
         b: common_vendor.p({

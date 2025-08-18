@@ -7283,9 +7283,9 @@ function isConsoleWritable() {
   return isWritable;
 }
 function initRuntimeSocketService() {
-  const hosts = "127.0.0.1,192.168.31.171";
+  const hosts = "192.168.3.54,192.168.146.1,192.168.222.1,127.0.0.1,172.29.224.1";
   const port = "8090";
-  const id = "mp-weixin_zwErLR";
+  const id = "mp-weixin_qdJGPn";
   const lazy = typeof swan !== "undefined";
   let restoreError = lazy ? () => {
   } : initOnError();
@@ -8284,7 +8284,7 @@ const pages = [
     }
   },
   {
-    path: "pages/memo/memoDetail",
+    path: "pages/view/memoDetail/memoDetail",
     style: {
       navigationBarTitleText: "详情"
     }
