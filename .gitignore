@@ -4,6 +4,7 @@
 unpackage/
 dist/
 build/
+uni_modules/
 
 # 依赖目录
 node_modules/
